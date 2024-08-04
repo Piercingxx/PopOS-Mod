@@ -41,6 +41,12 @@ wait
 # Installing important things && stuff && some dependancies
 echo "Installing Programs and Drivers"
 sleep 2
+nala install kitty -y
+nala install gnome-terminal -y
+nala install gnome-text-editor -y
+nala install dconf* -y
+nala install pipx -y
+
 apt install dbus-x11 -y
 apt install cups -y
 apt install util-linux -y
@@ -87,8 +93,7 @@ flatpak install flathub com.github.tchx84.Flatseal -y
 flatpak install flathub org.qbittorrent.qBittorrent -y
 flatpak install flathub io.missioncenter.MissionCenter -y
 flatpak install flathub com.tomjwatson.Emote -y
-
-# Install Gnome-extensions-cli
+sleep 2
 pipx install gnome-extensions-cli --system-site-packages
 
 # Gimp Config
@@ -266,7 +271,7 @@ sudo -u "$username" gnome-extensions enable caffeine@patapon.info && echo "Caffe
 wait
 sudo -u "$username" gnome-extensions enable openbar@openbar.github.io && echo "OpenBar: Enabled"
 wait
-sudo -u "$username" gsettings set org.gnome.shell disabled-extensions "['ding@rastersoft.com', 'popx11gestures@system76.com', 'pop-shell@system76.com', 'cosmic-workspace@system76.com', 'pop-cosmic@system76.com', 'cosmic-dock@system76.com']"
+sudo -u "$username" gsettings set org.gnome.shell disabled-extensions "['cosmic-workspaces@system76.com', 'ding@rastersoft.com', 'popx11gestures@system76.com', 'pop-shell@system76.com', 'pop-cosmic@system76.com', 'cosmic-dock@system76.com']"
 wait
 # Modify Gnome Extensions
 sudo -u "$username" gnome-extensions enable just-perfection-desktop@just-perfection && echo "Just Perfection: Enabled"
