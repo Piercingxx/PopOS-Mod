@@ -48,13 +48,13 @@ sudo apt install -f
 wait
 flatpak update
 wait
-nala install gnome-shell -y
 nala install kitty -y
 nala install gnome-terminal -y
 nala install gnome-text-editor -y
 nala install dconf* -y
 nala install pipx -y
 wait
+pipx install gnome-extensions-cli --system-site-packages
 
 
 
