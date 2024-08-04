@@ -28,9 +28,6 @@ wait
 
 # Making .config and.fonts Directories
 cd "$builddir" || exit
-mkdir -p /home/"$username"/.config
-mkdir -p /home/"$username"/.local/share/gnome-shell/extensions/
-mkdir -p /root/.icons
 mkdir -p /home/"$username"/Pictures/backgrounds
 cp -R dotconf/kitty /home/"$username"/.config/
 chown -R "$username":"$username" /home/"$username"/.config/kitty
