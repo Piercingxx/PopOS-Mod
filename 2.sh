@@ -266,6 +266,8 @@ sudo -u "$username" gnome-extensions enable caffeine@patapon.info && echo "Caffe
 wait
 sudo -u "$username" gnome-extensions enable openbar@openbar.github.io && echo "OpenBar: Enabled"
 wait
+sudo -u "$username" gsettings set org.gnome.shell disabled-extensions "['ding@rastersoft.com', 'popx11gestures@system76.com', 'pop-shell@system76.com', 'cosmic-workspace@system76.com', 'pop-cosmic@system76.com', 'cosmic-dock@system76.com']"
+wait
 # Modify Gnome Extensions
 sudo -u "$username" gnome-extensions enable just-perfection-desktop@just-perfection && echo "Just Perfection: Enabled"
 wait
