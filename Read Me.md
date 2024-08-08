@@ -8,7 +8,7 @@ This script will automate the install of all the drivers fonts and programs I us
 
 - "2.sh" will install applications, fonts, cursors, and customize settings (it takes several minutes to run).
 
-- "Surface.sh" will install the necessary drivers to get a Microsoft Surface running on Debian (skip if not a Surface).
+- "Surface.sh" will install the necessary drivers to get a Microsoft Surface running on PopOS (Also Debian and Ubuntu have been tested with this same script...skip if not a Surface).
 
 - If you have multiple hard drives in your system, after you run all the scripts, edit your fstab to auto-mount your drives on boot.
 
