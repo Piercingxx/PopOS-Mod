@@ -38,12 +38,11 @@ wait
 # Installing important things && stuff && some dependancies
 echo "Installing Programs and Drivers"
 sleep 2
-nala install kitty -y
-nala install gnome-terminal -y
-nala install gnome-text-editor -y
-nala install dconf* -y
-nala install pipx -y
-
+apt install kitty -y
+apt install gnome-terminal -y
+apt install gnome-text-editor -y
+apt install dconf* -y
+apt install pipx -y
 apt install dbus-x11 -y
 apt install cups -y
 apt install util-linux -y
