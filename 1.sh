@@ -40,8 +40,6 @@ mkdir -p /var/lib/usbmux/.config
 
 echo "Install Essentials"
 sleep 2
-apt update && upgrade -y
-wait
 apt full-upgrade -y
 wait
 sudo apt install -f
@@ -49,13 +47,20 @@ wait
 flatpak update
 wait
 nala install kitty -y
+wait
+apt install flatpak gnome-software-plugin-flatpak -y
+flatpak remote-add flathub https://dl.flathub.org/repo/flathub.flatpakrepo -y
+wait
 nala install gnome-terminal -y
+wait
 nala install gnome-text-editor -y
+wait
 nala install dconf* -y
+wait
 nala install pipx -y
 wait
 pipx install gnome-extensions-cli --system-site-packages
-
+wait
 
 
 apt update && upgrade -y
