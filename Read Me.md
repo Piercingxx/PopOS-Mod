@@ -6,7 +6,9 @@ This script will automate the install of all the drivers fonts and programs I us
 
 - "1.sh" to install Gnome-shell and a few adjustments.
 
-- "2.sh" will install applications, fonts, cursors, and customize settings (it takes several minutes to run).
+- "2.sh" will install applications, fonts, and cursors (it takes several minutes to run).
+
+- "3.sh" installs the last few Gnome extensions and modify's them. Pop doesnt always like to cooperate. Do not run this script as sudo
 
 - "Surface.sh" will install the necessary drivers to get a Microsoft Surface running on PopOS (Also Debian and Ubuntu have been tested with this same script...skip if not a Surface).
 
