@@ -84,7 +84,6 @@ flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref
 flatpak install flathub com.google.Chrome -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub com.dropbox.Client -y
-flatpak install flathub org.libreoffice.LibreOffice -y
 flatpak install flathub org.gnome.SimpleScan -y
 flatpak install flathub org.blender.Blender -y
 flatpak install flathub com.usebottles.bottles -y
