@@ -1,102 +1,57 @@
 #!/bin/bash
 
-# https://github.com/Piercing666
-
-# Check if Script is Run as Root
-if [[ $EUID -ne 0 ]]; then
-  echo "You must be a root user to run this script, please run sudo su then try again" 2>&1
-  exit 1
-fi
-
-username=$(id -u -n 1000)
-builddir=$(pwd)
-
-echo "Starting Script 2.sh"
-sleep 2
-
 # Checks for active network connection
 if [[ -n "$(command -v nmcli)" && "$(nmcli -t -f STATE g)" != connected ]]; then
   awk '{print}' <<<"Network connectivity is required to continue."
   exit
 fi
 
+
+username=$(id -u -n 1000)
+builddir=$(pwd)
+
 echo "Updating Repositiories"
 sleep 2
 sudo apt update && upgrade -y
 wait
 
-
-# Making .config and.fonts Directories
-cd "$builddir" || exit
-mkdir -p /home/"$username"/.config
-chown -R "$username":"$username" /home/"$username"/.config
-mkdir -p /home/"$username"/.fonts
-chown -R "$username":"$username" /home/"$username"/.fonts
-mkdir -p /home/"$username"/.local/share/gnome-shell/extensions/
-chown -R "$username":"$username" /home/"$username"/.local/share/gnome-shell/extensions/
-mkdir -p /root/.icons
-chown -R root:root /root/.icons
 mkdir -p /home/"$username"/Pictures/backgrounds
+cp ~/dotconf/bg.jpg /home/"$username"/Pictures/backgrounds
 chown -R "$username":"$username" /home/"$username"/Pictures/backgrounds
 cp -R dotconf/kitty /home/"$username"/.config/
 chown -R "$username":"$username" /home/"$username"/.config/kitty
 
 
-# Installing important things && stuff && some dependancies
-echo "Installing Programs and Drivers"
-sleep 2
+
+
+apt install wget gpg flatpak gnome-software-plugin-flatpak -y
+flatpak remote-add flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+apt update && upgrade -y
+wait
+apt full-upgrade -y
+wait
+sudo apt install -f
+wait
+flatpak update
+
+
 apt install kitty -y
-apt install gnome-terminal -y
-apt install gnome-text-editor -y
 apt install dconf* -y
 apt install pipx -y
-apt install dbus-x11 -y
-apt install cups -y
-apt install util-linux -y
-apt install xdg-utils -y
-apt install libnvidia-egl-wayland -y
-apt install build-essential -y
 apt install gnome-tweaks -y
-apt install nautilus -y
 apt install gnome-shell-extension-manager -y
-apt install gdebi -y
-apt install fuse -y
-apt install libfuse2 -y
-apt install x11-xserver-utils -y
-apt install devscripts -y
 apt install papirus-icon-theme -y
-apt install fonts-noto-color-emoji -y
-apt install zip unzip gzip tar -y
-apt install make -y
-apt install linux-headers-generic -y
-apt install seahorse -y
-apt install gnome-calculator -y
-apt install rename -y
-apt install neofetch -y
-apt install mpv -y
-apt install gparted -y
-apt install curl -y
-apt install gh -y
-apt install lua5.4 -y
-apt install gnome-disk-utility -y
-sleep 2
-flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref -y
-flatpak install flathub com.google.Chrome -y
-flatpak install flathub md.obsidian.Obsidian -y
-flatpak install flathub com.dropbox.Client -y
-flatpak install flathub org.gnome.SimpleScan -y
-flatpak install flathub org.blender.Blender -y
-flatpak install flathub com.usebottles.bottles -y
-flatpak install flathub com.github.tchx84.Flatseal -y
-flatpak install flathub org.qbittorrent.qBittorrent -y
-flatpak install flathub io.missioncenter.MissionCenter -y
-flatpak install flathub com.tomjwatson.Emote -y
+
 sleep 2
 
-# Gimp Config
-rm -r /home/"username"/.var/app/org.gimp.GIMP/config/GIMP/2.99
-cd dotconf/Gimp || exit
-cd "$builddir" || exit
+flatpak install flathub md.obsidian.Obsidian -y
+flatpak install flathub com.dropbox.Client -y
+flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref -y
+flatpak install flathub com.tomjwatson.Emote -y
+
+# Install Gnome-extensions-cli
+pipx install gnome-extensions-cli --system-site-packages
+
 
 # VSCode
 wget "https://vscode.download.prss.microsoft.com/dbazure/download/stable/e170252f762678dec6ca2cc69aba1570769a5d39/code_1.88.1-1712771838_amd64.deb"
@@ -111,25 +66,32 @@ wait
 sudo dpkg -i synology-drive-client-15724.x86_64.deb
 wait
 
-# Synology Chat
-wget "https://global.synologydownload.com/download/Utility/ChatClient/1.2.2-0222/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.2-0222.deb"
-wait
-sudo dpkg --force-all -i Synology\ Chat\ Client-1.2.2-0222.deb
-wait
+# Gimp dotfiles
+rm -rf /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/*
+cd dotconf/Gimp || exit
+unzip "2.99.zip"
+rm "2.99.zip"
+cp /2.99 /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/
+cd "$builddir" || exit
 
 
-sudo apt update
-wait
-sudo apt upgrade -y
-wait
+# More Fonts
+mkdir -p $HOME/.fonts
+cd $HOME/.fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+unzip FiraCode.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+unzip Meslo.zip
+rm Firacode.zip
+rm Meslo.zip
 
 
-echo "Installing Cursors & Icons"
-sleep 2
-# Cursor
+# Reloading Font
+fc-cache -vf
+wait
+
+# Cursors
 wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.icons
-
-# Install Nordzy cursor
 git clone https://github.com/alvatip/Nordzy-cursors
 cd Nordzy-cursors || exit
 ./install.sh
@@ -137,31 +99,14 @@ cd "$builddir" || exit
 rm -rf Nordzy-cursors
 
 
-echo "Installing Fonts"
+
+# Extensions
+echo "Gnome Extensions"
 sleep 2
-# Installing fonts
-cd "$builddir" || exit
-apt install fonts-font-awesome fonts-noto-color-emoji -y
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-chmod -R 777 FiraCode.zip
-unzip FiraCode.zip -d /home/"$username"/.fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-chmod -R 777 Meslo.zip
-unzip Meslo.zip -d /home/"$username"/.fonts
-mv dotfonts/fontawesome/otfs/*.otf /home/"$username"/.fonts/
-chown -R "$username":"$username" /home/"$username"/.fonts
-apt install ttf-mscorefonts-installer -y
-apt install fonts-terminus -y
-
-# Reloading Font
-fc-cache -vf
-wait
-
-
-# partial Gnome Extensions - the rest are ran in 3.sh
 apt install gnome-shell-extension-appindicator -y
 apt install gnome-shell-extension-gsconnect -y
 apt install gnome-shell-extension-caffeine -y
+
 
 
 #Nautilus Customization
@@ -178,10 +123,6 @@ cd "$builddir" || exit
 rm -rf nautilus-open-any-terminal
 
 
-# Removing zip files and stuff
-rm -r dotconf
-rm -rf FiraCode.zip
-rm -rf Meslo.zip
 
 
 sudo apt update && upgrade -y
@@ -199,5 +140,24 @@ wait
 flatpak update -y
 
 
-read -r -p "2.sh complete. Reboot and install Steam. Then run Script 3.sh for Nvidia drivers, skip 3.sh if you are not using Nvidia hardware. Press enter to reboot"
-sudo reboot
+
+# Synology Chat
+wget "https://global.synologydownload.com/download/Utility/ChatClient/1.2.2-0222/Ubuntu/x86_64/Synology%20Chat%20Client-1.2.2-0222.deb"
+wait
+sudo dpkg --force-all -i Synology\ Chat\ Client-1.2.2-0222.deb
+wait
+sudo mv /opt/Synology\ Chat /opt/SynologyChat
+sudo rm /etc/alternatives/synochat
+sudo ln -s /opt/SynologyChat/synochat /etc/alternatives/synochat
+sudo rm /usr/share/applications/synochat.desktop
+sudo touch /usr/share/applications/synochat.desktop
+sudo printf "[Desktop Entry]
+Name=Synology Chat
+Exec="/opt/SynologyChat/synochat" %%U
+Terminal=false
+Type=Application
+Icon=synochat
+StartupWMClass=SynologyChat
+Comment=Synology Chat Desktop Client
+Categories=Utility;" | sudo tee -a /usr/share/applications/synochat.desktop
+synochat
