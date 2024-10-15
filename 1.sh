@@ -51,10 +51,6 @@ wait
 apt install flatpak gnome-software-plugin-flatpak -y
 flatpak remote-add flathub https://dl.flathub.org/repo/flathub.flatpakrepo -y
 wait
-nala install gnome-terminal -y
-wait
-nala install gnome-text-editor -y
-wait
 nala install dconf* -y
 wait
 nala install pipx -y
