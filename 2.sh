@@ -51,7 +51,6 @@ wget "https://vscode.download.prss.microsoft.com/dbazure/download/stable/e170252
 wait
 dpkg -i code_1.88.1-1712771838_amd64.deb
 wait
-rm code_1.88.1-1712771838_amd64.deb
 
 # Synology Drive
 wget "https://global.download.synology.com/download/Utility/SynologyDriveClient/3.4.0-15724/Ubuntu/Installer/synology-drive-client-15724.x86_64.deb"
