@@ -44,8 +44,6 @@ apt full-upgrade -y
 wait
 sudo apt install -f
 wait
-flatpak update
-wait
 nala install kitty -y
 wait
 apt install flatpak gnome-software-plugin-flatpak -y
@@ -57,7 +55,8 @@ nala install pipx -y
 wait
 pipx install gnome-extensions-cli --system-site-packages
 wait
-
+flatpak update
+wait
 
 apt update && upgrade -y
 wait
