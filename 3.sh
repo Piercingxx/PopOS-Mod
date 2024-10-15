@@ -19,7 +19,14 @@ gext install openbar@neuromorph
 
 
 #Customization
+#!/bin/bash
 
+
+
+
+# Customizations 
+### These will effect your Gnome GUI as well some Hyprland settings
+##### Do not run these unless you know what they are for.
 gsettings set org.gnome.desktop.interface clock-format 24h && echo "Clock Format: 24h"
 gsettings set org.gnome.desktop.interface clock-show-weekday true && echo "Clock Show Weekday: True"
 gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true && echo "Numlock State: True"
@@ -27,8 +34,8 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:backspace']" &
 gsettings set org.gnome.desktop.peripherals.mouse.speed "0.11790393013100431"
 gsettings set org.gnome.desktop.peripherals.mouse.accel-profile "'flat'"
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark && echo "Color Scheme: Dark"
-gsettings set org.gnome.desktop.session idle-delay 0 && echo "Lock Screen Idle: 20"
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing' && echo "Sleep Inactive AC: Nothing"
+gsettings set org.gnome.desktop.session idle-delay 900 && echo "Lock Screen Idle: 20"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type '1800' && echo "Sleep AC: 30min"
 gsettings set org.gnome.desktop.interface show-battery-percentage true && echo "Show Battery Percentage: True"
 gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false && echo "Ambient Enabled: False"
 gsettings set org.gnome.settings-daemon.plugins.power idle-delay "unit32 900" && echo "Idle Delay: 15 minutes"
@@ -47,70 +54,43 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Super>Q']" && echo "Sup
 gsettings set org.gnome.mutter.wayland.keybindings.restore-shortcuts "['']" 
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true && echo "Tap to Click: True"
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true && echo "Natural Scroll: True"
-gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas' && echo "Click Method: Areas"
+dconf write /org/gnome/desktop/peripherals/touchpad/edge-scrolling-enabled 'false' && echo "Edge Scrolling Enabled: False"
+dconf write /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled true && echo "Two Finger Scrolling Enabled: True"
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers' && echo "Click Method: Areas"
 gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive' && echo "Power Button Action: Interactive"
 gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark && echo "GTK Theme: Adwaita-dark"
 gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors' && echo "Cursor Theme: Nordzy"
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' && echo "Icon Theme: Papirus-Dark"
-gsettings set org.gnome.shell favorite-apps "['com.google.Chrome.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'org.libreoffice.LibreOffice.writer.desktop', 'org.gnome.Calculator.desktop', 'md.obsidian.Obsidian.desktop', 'com.visualstudio.code.desktop', 'code.desktop', 'synochat.desktop', 'org.gimp.GIMP.desktop', 'org.blender.Blender.desktop']" && echo "Favorite Apps: Chrome, Nautilus, LibreOffice, Calculator, Obsidian, VSCode, Synology Chat, Gimp"
+dconf write /org/gnome/desktop/interface/icon-theme "'ePapirus-Dark'"
+dconf write /org/gnome/desktop/wm/preferences/button-layout 'appmenu:close'
+gsettings set org.gnome.shell favorite-apps "['com.google.Chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.libreoffice.LibreOffice.writer.desktop', 'org.gnome.Calculator.desktop', 'md.obsidian.Obsidian.desktop', 'com.visualstudio.code.desktop', 'code.desktop', 'synochat.desktop', 'org.gimp.GIMP.desktop', 'org.blender.Blender.desktop']" && echo "Favorite Apps: Chrome, Nautilus, LibreOffice, Calculator, Obsidian, VSCode, Discord, Gimp"
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal new-tab true
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal flatpak system
-wait
-# Enable Gnome Extensions
 gnome-extensions enable ubuntu-appindicators@ubuntu.com && echo "App Indicator: Enabled"
-wait
 gnome-extensions enable gsconnect@andyholmes.github.io && echo "GSConnect: Enabled"
-wait
-gnome-extensions enable awesome-tiles@velitasali.com && echo "Awesome Tiles: Enabled"
-wait
+gnome-extensions enable awesome-tiles@velitasali.com && echo "Awesome Tiles:extension-manager Enabled"
 gnome-extensions enable aztaskbar@aztaskbar.gitlab.com && echo "AzTaskbar: Enabled"
-wait
 gnome-extensions enable blur-my-shell@aunetx && echo "Blur My Shell: Enabled"
-wait
 gnome-extensions enable caffeine@patapon.info && echo "Caffeine: Enabled"
-wait
 gnome-extensions enable openbar@openbar.github.io && echo "OpenBar: Enabled"
-wait
-gsettings set org.gnome.shell disabled-extensions "['cosmic-workspaces@system76.com', 'ding@rastersoft.com', 'popx11gestures@system76.com', 'pop-shell@system76.com', 'pop-cosmic@system76.com', 'cosmic-dock@system76.com']"
-wait
-# Modify Gnome Extensions
 gnome-extensions enable just-perfection-desktop@just-perfection && echo "Just Perfection: Enabled"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/dash-icon-size "48" && echo "Just Perfection Dash Icon Size: 48"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/animation "3" && echo "Just Perfection Animation: 3"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/startup-status "0" && echo "Just Perfection Startup Status: 0"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/app-menu-icon "false" && echo "Just Perfection App Menu Icon: False"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/activities-button "false" && echo "Just Perfection Activities Button: False"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/app-menu "false" && echo "Just Perfection App Menu: False"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/app-menu-label "false" && echo "Just Perfection App Menu Label: False"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/search "false" && echo "Just Perfection Search: False"
-wait
 dconf write /org/gnome/shell/extensions/just-perfection/theme "true" && echo "Just Perfection Theme: True"
-wait
 dconf write /org/gnome/shell/extensions/caffeine/duration-timer "4" && echo "Caffeine Duration Timer: 4"
-wait
 dconf write /org/gnome/shell/extensions/awesome-tiles/gap-size-increments "1" && echo "Awesome Tiles Gap Size Increments: 1"
-wait
 dconf write /org/gnome/shell/extensions/aztaskbar/favorites "false" && echo "AzTaskbar Favorites: False"
-wait
 dconf write /org/gnome/shell/extensions/aztaskbar/main-panel-height "33" && echo "AzTaskbar Main Panel Height: 33"
-wait
+dconf write /org/gnome/shell/extensions/aztaskbar/panel-on-all-monitors "false"
 dconf write /org/gnome/shell/extensions/aztaskbar/show-panel-activities-button "false" && echo "AzTaskbar Show Panel Activities Button: False"
-wait
 dconf write /org/gnome/shell/extensions/aztaskbar/icon-size "23" && echo "AzTaskbar Icon Size: 23"
-wait
 dconf write /org/gnome/shell/extensions/blur-my-shell/brightness "1.0" && echo "Blur My Shell Brightness: 1.0"
-wait
-
-# OpenBar Aura theme
 dconf write /org/gnome/shell/extensions/openbar/bg-opacity '0.8'
 dconf write /org/gnome/shell/extensions/openbar/prominent1 "['49', '60', '43']"
 dconf write /org/gnome/shell/extensions/openbar/prominent2 "['196', '216', '182']"
@@ -164,17 +144,9 @@ dconf write /org/gnome/shell/extensions/openbar/reloadstyle "true"
 dconf write /gnome/shell/extensions/openbar/dashdock-style "'Bar'"
 dconf write /org/gnome/shell/extensions/aztaskbar/indicator-color-focused "'rgb(246,148,255)'"
 dconf write /org/gnome/shell/extensions/aztaskbar/indicator-color-running "'rgb(130,226,255)'"
-wait
 dconf write /org/gnome/desktop/interface/font-name 'MesloLGSDZ Nerd Font 11'
-wait
 dconf write /org/gnome/desktop/interface/document-font-name 'FiraCode Nerd Font 11'
-wait
 dconf write /org/gnome/desktop/interface/monospace-font-name 'Terminus (TTF) Medium 12'
-wait
-dconf write /org/gnome/desktop/wm/preferences/button-layout 'appmenu:minimize,close'
-wait
-dconf write /org/gnome/desktop/wm/preferences/button-layout 'appmenu:close'
-sleep 2
 
 
 
