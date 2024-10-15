@@ -51,9 +51,6 @@ flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref
 flatpak install flathub com.tomjwatson.Emote -y
 flatpak install flathub org.kde.kdenlive -y
 
-# Install Gnome-extensions-cli
-pipx install gnome-extensions-cli --system-site-packages
-
 
 # VSCode
 wget "https://vscode.download.prss.microsoft.com/dbazure/download/stable/e170252f762678dec6ca2cc69aba1570769a5d39/code_1.88.1-1712771838_amd64.deb"
