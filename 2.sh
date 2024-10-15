@@ -137,6 +137,7 @@ apt autoremove -y
 sudo apt update && upgrade -y
 wait
 flatpak update -y
+apt install dbus-x11 -y
 
 
 
