@@ -199,18 +199,5 @@ wait
 flatpak update -y
 
 
-
-# Beautiful bash
-git clone https://github.com/ChrisTitusTech/mybash
-chown -R "$username":"$username" /home/"$username"/.bashrc
-cd mybash || exit
-bash setup.sh
-cd "$builddir" || exit
-rm /home/"$username"/.bashrc
-cp dotconf/.bashrc /home/"$username"/.bashrc
-chown -R "$username":"$username" /home/"$username"/.bashrc
-
-
-
 read -r -p "2.sh complete. Reboot and install Steam. Then run Script 3.sh for Nvidia drivers, skip 3.sh if you are not using Nvidia hardware. Press enter to reboot"
 sudo reboot
