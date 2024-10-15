@@ -23,6 +23,7 @@ fi
 apt install nala -y
 
 
+
 # Update packages list and update system
 echo "Updating with non-free drivers"
 sleep 2
@@ -50,8 +51,11 @@ nala install dconf* -y
 wait
 nala install pipx -y
 wait
-pipx install gnome-extensions-cli --system-site-packages
+apt install gnome-tweaks -y
+apt install gnome-shell-extension-manager -y
+apt install papirus-icon-theme -y
 wait
+pipx install gnome-extensions-cli --system-site-packages
 
 
 apt update && upgrade -y
