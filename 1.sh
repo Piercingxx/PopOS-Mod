@@ -55,8 +55,7 @@ nala install pipx -y
 wait
 pipx install gnome-extensions-cli --system-site-packages
 wait
-flatpak update
-wait
+
 
 apt update && upgrade -y
 wait
