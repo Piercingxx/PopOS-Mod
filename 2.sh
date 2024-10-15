@@ -35,12 +35,6 @@ wait
 flatpak update
 
 
-apt install kitty -y
-apt install dconf* -y
-apt install pipx -y
-apt install gnome-tweaks -y
-apt install gnome-shell-extension-manager -y
-apt install papirus-icon-theme -y
 
 sleep 2
 
