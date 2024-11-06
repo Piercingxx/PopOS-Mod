@@ -43,6 +43,7 @@ flatpak install flathub md.obsidian.Obsidian -y
 flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref -y
 flatpak install flathub com.tomjwatson.Emote -y
 flatpak install flathub org.kde.kdenlive -y
+flatpak install flathub io.github.lunarequest.NightPDF -y
 sudo apt remove firefox -y
 
 
@@ -98,6 +99,10 @@ sleep 2
 apt install gnome-shell-extension-appindicator -y
 apt install gnome-shell-extension-gsconnect -y
 apt install gnome-shell-extension-caffeine -y
+# Just Perfection
+# App Icons Taskbar
+# Blur My Shell
+# Block Caribou 36
 
 
 
