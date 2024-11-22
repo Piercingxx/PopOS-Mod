@@ -24,11 +24,10 @@ sudo apt install feh numlockx fonts-unifont -y
 sudo apt install neofetch -y
 
 # Replacing files
-cp $HOME/Downloads/i3wm/Wallpapers/bg.jpg $HOME/Pictures/bg.jpg
 mkdir $HOME/.config/i3
-cp $HOME/Downloads/i3wm/config/i3/config $HOME/.config/i3/config
+cp $HOME/popos-mod/dotconf/i3/config $HOME/.config/i3/config
 mkdir $HOME/.config/polybar
 mkdir $HOME/.config/picom
-cp $HOME/Downloads/i3wm/config/polybar/config $HOME/.config/polybar/config
-cp $HOME/Downloads/i3wm/config/polybar/launch.sh $HOME/.config/polybar/launch.sh
-cp $HOME/Downloads/i3wm/config/picom/picom.conf $HOME/.config/picom/picom.conf
+cp $HOME/popos-mod/dotconf/polybar/config $HOME/.config/polybar/config
+cp $HOME/popos-mod/dotconf/polybar/launch.sh $HOME/.config/polybar/launch.sh
+cp $HOME/popos-mod/dotconf/picom/picom.conf $HOME/.config/picom/picom.conf
