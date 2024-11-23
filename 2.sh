@@ -99,8 +99,10 @@ sleep 2
 apt install gnome-shell-extension-appindicator -y
 apt install gnome-shell-extension-gsconnect -y
 apt install gnome-shell-extension-caffeine -y
-# Just Perfection
 # App Icons Taskbar
+wget https://gitlab.com/AndrewZaech/aztaskbar/-/archive/main/aztaskbar-main.tar
+gnome-extensions install aztaskbar-main.tar
+# Just Perfection
 # Blur My Shell
 # Block Caribou 36
 
