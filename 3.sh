@@ -6,16 +6,11 @@
 # Extensions
 echo "Gnome Extensions"
 sleep 2
-# App Icons Taskbar
-gext install aztaskbar@aztaskbar.gitlab.com
-# Awesome Tiles
-gext install awesome-tiles@velitasali.com
-# Blur My Shell
-gext install blur-my-shell@aunetx
 # Just Perfection
-gext install just-perfection-desktop@just-perfection
-# Open Bar
-gext install openbar@neuromorph
+
+# Blur My Shell
+
+# Block Caribou 36
 
 
 #Customization
