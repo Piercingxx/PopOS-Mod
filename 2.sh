@@ -91,7 +91,11 @@ cd Nordzy-cursors || exit
 cd "$builddir" || exit
 rm -rf Nordzy-cursors
 
-
+#used to mount fstab
+mkdir -p /media/Working-Storage
+mkdir -p /media/Archived-Storage
+chown "$username":"$username" /home/"$username"/media/Archived-Storage
+chown "$username":"$username" /home/"$username"/media/Working-Storage
 
 # Extensions
 echo "Gnome Extensions"
