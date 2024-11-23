@@ -148,6 +148,12 @@ dconf write /org/gnome/desktop/interface/font-name 'MesloLGSDZ Nerd Font 11'
 dconf write /org/gnome/desktop/interface/document-font-name 'FiraCode Nerd Font 11'
 dconf write /org/gnome/desktop/interface/monospace-font-name 'Terminus (TTF) Medium 12'
 
+dconf write /org/gnome/shell/extensions/pop-cosmic/show-workspaces-button 'false'
+dconf write /org/gnome/shell/extensions/pop-cosmic/show-applications-button 'false'
+dconf write /org/gnome/system/location/enabled 'false'
+dconf write /org/gnome/desktop/privacy/report-technical-problems 'false'
+dconf write /org/gnome/shell/enabled-extensions "['pop-shell@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com']"
+dconf write /org/gnome/shell/disabled-extensions "['cosmic-dock@system76.com', 'cosmic-workspaces@system76.com', 'popx11gestures@system76.com', 'ding@rastersoft.com', 'pop-cosmic@system76.com']"
 
 
 
