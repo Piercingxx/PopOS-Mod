@@ -62,9 +62,7 @@ wait
 # Gimp dotfiles
 rm -rf /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/*
 cd dotconf/Gimp || exit
-unzip "2.99.zip"
-rm "2.99.zip"
-cp /2.99 /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/
+cp /3.0 /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/
 cd "$builddir" || exit
 
 
