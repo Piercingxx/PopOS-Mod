@@ -94,6 +94,7 @@ mkdir -p /media/Archived-Storage
 chown "$username":"$username" /home/"$username"/media/Archived-Storage
 chown "$username":"$username" /home/"$username"/media/Working-Storage
 
+
 # Extensions
 echo "Gnome Extensions"
 sleep 2
@@ -110,6 +111,11 @@ cd gnome-shell-extension-awesome-tiles
 ./install.sh local-install
 cd ..
 rm -rf gnome-shell-extension-awesome-tiles
+# Worthless Gaps
+git clone https://github.com/mipmip/gnome-shell-extensions-useless-gaps.git
+chmod -R u+x nome-shell-extensions-useless-gaps
+cd gnome-shell-extensions-useless-gaps
+./install.sh local-install
 # Just Perfection
 # Blur My Shell
 # Block Caribou 36
