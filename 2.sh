@@ -44,7 +44,6 @@ flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref
 flatpak install flathub com.tomjwatson.Emote -y
 flatpak install flathub org.kde.kdenlive -y
 flatpak install flathub io.github.lunarequest.NightPDF -y
-sudo apt remove firefox -y
 
 
 # VSCode
@@ -104,6 +103,13 @@ apt install gnome-shell-extension-caffeine -y
 # App Icons Taskbar
 wget https://gitlab.com/AndrewZaech/aztaskbar/-/archive/main/aztaskbar-main.tar
 gnome-extensions install aztaskbar-main.tar
+# Awesome Tiles
+git clone https://github.com/velitasali/gnome-shell-extension-awesome-tiles.git
+chmod -R u+x gnome-shell-extension-awesome-tiles
+cd gnome-shell-extension-awesome-tiles
+./install.sh local-install
+cd ..
+rm -rf gnome-shell-extension-awesome-tiles
 # Just Perfection
 # Blur My Shell
 # Block Caribou 36

@@ -6,22 +6,15 @@
 # Extensions
 echo "Gnome Extensions"
 sleep 2
+
+# You will still need to install:
 # Just Perfection
-
 # Blur My Shell
-
 # Block Caribou 36
 
 
-#Customization
-#!/bin/bash
 
-
-
-
-# Customizations 
-### These will effect your Gnome GUI as well some Hyprland settings
-##### Do not run these unless you know what they are for.
+# Customizations
 gsettings set org.gnome.desktop.interface clock-format 24h && echo "Clock Format: 24h"
 gsettings set org.gnome.desktop.interface clock-show-weekday true && echo "Clock Show Weekday: True"
 gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true && echo "Numlock State: True"
