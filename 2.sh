@@ -34,13 +34,11 @@ sudo apt install -f
 wait
 flatpak update
 
-flatpak install flathub one.ablaze.floorp -y
+flatpak install flathub net.waterfox.waterfox -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install https://flathub.org/beta-repo/appstream/org.gimp.GIMP.flatpakref -y
 flatpak install flathub com.tomjwatson.Emote -y
 flatpak install flathub org.kde.kdenlive -y
-flatpak install flathub io.github.lunarequest.NightPDF -y
-
 
 # VSCode
 wget "https://vscode.download.prss.microsoft.com/dbazure/download/stable/e170252f762678dec6ca2cc69aba1570769a5d39/code_1.88.1-1712771838_amd64.deb"
@@ -61,7 +59,6 @@ chown -R "$username":"$username" gimp-dots
 rm -rf /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/*
 rm -rf /home/"$username"/.config/GIMP/*
 cd gimp-dots/Gimp || exit
-cp -R 3.0 /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/
 cp -R 3.0 /home/"$username"/.config/GIMP/
 cd "$builddir" || exit
 
@@ -82,19 +79,6 @@ rm Meslo.zip
 fc-cache -vf
 wait
 
-# Cursors
-wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.icons
-git clone https://github.com/alvatip/Nordzy-cursors
-cd Nordzy-cursors || exit
-./install.sh
-cd "$builddir" || exit
-rm -rf Nordzy-cursors
-
-#used to mount fstab
-mkdir -p /media/Working-Storage
-mkdir -p /media/Archived-Storage
-chown "$username":"$username" /home/"$username"/media/Archived-Storage
-chown "$username":"$username" /home/"$username"/media/Working-Storage
 
 
 # Extensions
@@ -104,20 +88,8 @@ apt install gnome-shell-extension-appindicator -y
 apt install gnome-shell-extension-gsconnect -y
 apt install gnome-shell-extension-caffeine -y
 # App Icons Taskbar
-wget https://gitlab.com/AndrewZaech/aztaskbar/-/archive/main/aztaskbar-main.tar
-gnome-extensions install aztaskbar-main.tar
 # Awesome Tiles
-git clone https://github.com/velitasali/gnome-shell-extension-awesome-tiles.git
-chmod -R u+x gnome-shell-extension-awesome-tiles
-cd gnome-shell-extension-awesome-tiles
-./install.sh local-install
-cd ..
-rm -rf gnome-shell-extension-awesome-tiles
 # Worthless Gaps
-git clone https://github.com/mipmip/gnome-shell-extensions-useless-gaps.git
-chmod -R u+x nome-shell-extensions-useless-gaps
-cd gnome-shell-extensions-useless-gaps
-./install.sh local-install
 # Just Perfection
 # Blur My Shell
 # Block Caribou 36
