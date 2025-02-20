@@ -56,10 +56,13 @@ wait
 git clone https://github.com/Piercingxx/gimp-dots.git
 chmod -R u+x gimp-dots
 chown -R "$username":"$username" gimp-dots
-rm -rf /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/*
-rm -rf /home/"$username"/.config/GIMP/*
+rm -Rf /home/"$username"/.var/app/org.gimp.GIMP/config/GIMP/*
+rm -Rf /home/"$username"/.config/GIMP/*
+mkdir /home/"$username"/.config/GIMP/3.0
+chown -R "$username":"$username" /home/"$username"/.config/GIMP
 cd gimp-dots/Gimp || exit
-cp -R 3.0 /home/"$username"/.config/GIMP/
+cp -R "3.0" /home/"$username"/.config/GIMP/
+chown "$username":"$username" -R /home/"$username"/.config/GIMP
 cd "$builddir" || exit
 
 
@@ -88,8 +91,6 @@ apt install gnome-shell-extension-appindicator -y
 apt install gnome-shell-extension-gsconnect -y
 apt install gnome-shell-extension-caffeine -y
 # App Icons Taskbar
-# Awesome Tiles
-# Worthless Gaps
 # Just Perfection
 # Blur My Shell
 # Block Caribou 36
