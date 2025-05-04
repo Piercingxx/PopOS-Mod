@@ -40,5 +40,3 @@ wait
 echo "After reboot run vainfo"
 
 sudo reboot
-
-# reboot
